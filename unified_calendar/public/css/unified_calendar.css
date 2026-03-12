@@ -1,0 +1,75 @@
+/* ================= CALENDAR CONTAINER ================= */
+
+.fc {
+    font-family: "Inter", "Segoe UI", sans-serif;
+}
+
+/* calendar card */
+
+.fc-view-harness {
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+/* ================= DAY CELL ================= */
+
+.fc-daygrid-day {
+    border-radius: 10px;
+}
+
+/* ================= EVENTS ================= */
+
+.fc-event {
+    border-radius: 999px !important;
+    padding: 2px 8px !important;
+    font-size: 12px;
+    border: none !important;
+}
+
+/* hover effect */
+
+.fc-event:hover {
+    filter: brightness(0.95);
+}
+
+/* ================= WEEKEND ================= */
+
+.fc-day-sat,
+.fc-day-sun {
+    background: rgba(255,0,0,0.05);
+}
+
+/* ================= HEADER ================= */
+
+.fc-toolbar-title {
+    font-weight: 600;
+    font-size: 20px;
+}
+
+/* button style */
+
+.fc-button {
+    border-radius: 10px !important;
+    border: none !important;
+}
+
+/* today button */
+
+.fc-today-button {
+    background: #6366f1 !important;
+}
+
+/* navigation button */
+
+.fc-prev-button,
+.fc-next-button {
+    background: #f3f4f6 !important;
+    color: #111 !important;
+}
+
+/* ================= TODAY CELL ================= */
+
+.fc-day-today {
+    background: rgba(255, 165, 0, 0.15) !important;
+    border-radius: 12px;
+}
