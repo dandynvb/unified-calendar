@@ -4,7 +4,7 @@ app_publisher = "JSI"
 app_description = "Combined Calendar for ERPNext"
 app_email = "dandynvb@gmail.com"
 app_license = "mit"
-app_include_css = "/assets/unified_calendar/css/unified_calendar.css"
+# app_include_css = "/assets/unified_calendar/css/unified_calendar.css"
 
 # Apps
 # ------------------
