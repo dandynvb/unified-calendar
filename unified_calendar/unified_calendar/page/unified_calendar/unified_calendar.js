@@ -241,7 +241,86 @@ frappe.call({
 
         calendar.render();
 
+// ================= RIGHT CLICK MENU =================
 
+$(document).on("contextmenu", ".fc-daygrid-day", function(e){
+
+    e.preventDefault();
+
+    let date = $(this).attr("data-date");
+
+    let d = new frappe.ui.Dialog({
+        title: "Create",
+        fields: [
+            {
+                fieldtype: "HTML",
+                options: `
+                    <div style="display:flex;flex-direction:column;gap:8px">
+                        <button class="btn btn-sm btn-primary add-task">Add Task</button>
+                        <button class="btn btn-sm btn-default add-todo">Add ToDo</button>
+                        <button class="btn btn-sm btn-default add-leave">Add Leave</button>
+                    </div>
+                `
+            }
+        ]
+    });
+
+    d.show();
+
+    d.$wrapper.on("click", ".add-task", function(){
+        d.hide();
+        frappe.new_doc("Task",{ exp_start_date: date });
+    });
+
+    d.$wrapper.on("click", ".add-todo", function(){
+        d.hide();
+        frappe.new_doc("ToDo",{ date: date });
+    });
+
+    d.$wrapper.on("click", ".add-leave", function(){
+        d.hide();
+        frappe.new_doc("Leave Application",{ from_date: date, to_date: date });
+    });
+
+    d.$wrapper.on("click", ".add-holiday", function(){
+        d.hide();
+        frappe.new_doc("Holiday",{ holiday_date: date });
+    });
+
+});
+
+// ================= RIGHT CLICK MENU =================
+
+$(document).on("contextmenu", ".fc-daygrid-day", function(e){
+
+    e.preventDefault();
+
+    let date = $(this).attr("data-date");
+
+    let menu = new frappe.ui.Menu();
+
+    menu.add_item("Add Task", function(){
+        frappe.new_doc("Task", {
+            exp_start_date: date
+        });
+    });
+
+    menu.add_item("Add ToDo", function(){
+        frappe.new_doc("ToDo", {
+            date: date
+        });
+    });
+
+    menu.add_item("Add Leave", function(){
+        frappe.new_doc("Leave Application", {
+            from_date: date,
+            to_date: date
+        });
+    });
+
+    menu.show_at(e.pageX, e.pageY);
+
+});
         // ================= FILTER LOGIC =================
 
         function applyFilter(){
